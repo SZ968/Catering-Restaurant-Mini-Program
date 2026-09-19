@@ -1,0 +1,14 @@
+<view class="spec-block" wx:for="{{specs}}" wx:key="label" wx:for-item="spec">
+  <view class="spec-label">{{spec.label}}</view>
+  <view class="spec-options">
+    <view
+      class="spec-opt {{selected[spec.label] === opt ? 'active' : ''}}"
+      wx:for="{{spec.options}}"
+      wx:for-item="opt"
+      wx:key="*this"
+      data-label="{{spec.label}}"
+      data-option="{{opt}}"
+      bindtap="onSelect"
+    >{{opt}}</view>
+  </view>
+</view>

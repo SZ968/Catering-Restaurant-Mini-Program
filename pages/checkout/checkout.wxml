@@ -1,0 +1,66 @@
+<view class="checkout">
+  <view class="card">
+    <view class="section-title">订单明细</view>
+    <view class="co-item" wx:for="{{items}}" wx:key="key" wx:for-item="item">
+      <text class="co-name ellipsis">{{item.name}}</text>
+      <text class="co-spec" wx:if="{{item.spec}}">{{item.spec}}</text>
+      <text class="co-qty">x{{item.quantity}}</text>
+      <text class="co-price">¥{{item.price}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">履约方式</view>
+    <view class="type-row">
+      <view
+        class="type-item {{type === t.key ? 'active' : ''}} {{t.key === 'delivery' && !allowDelivery ? 'disabled' : ''}}"
+        wx:for="{{types}}" wx:key="key" wx:for-item="t"
+        data-key="{{t.key}}" bindtap="onType"
+      >{{t.label}}</view>
+    </view>
+
+    <view class="field" wx:if="{{type === 'dineIn'}}">
+      <text class="field-label">桌号</text>
+      <input class="field-input" placeholder="请输入桌号" value="{{tableNo}}" data-field="tableNo" bindinput="onField" />
+    </view>
+    <view class="field" wx:if="{{type === 'takeout'}}">
+      <text class="field-label">取餐时间</text>
+      <input class="field-input" placeholder="如 18:30" value="{{pickupTime}}" data-field="pickupTime" bindinput="onField" />
+    </view>
+    <block wx:if="{{type === 'delivery'}}">
+      <view class="field">
+        <text class="field-label">收货人</text>
+        <input class="field-input" placeholder="姓名" value="{{addressName}}" data-field="addressName" bindinput="onField" />
+      </view>
+      <view class="field">
+        <text class="field-label">手机号</text>
+        <input class="field-input" placeholder="手机号" value="{{addressPhone}}" data-field="addressPhone" bindinput="onField" type="number" />
+      </view>
+      <view class="field">
+        <text class="field-label">地址</text>
+        <input class="field-input" placeholder="详细地址" value="{{addressDetail}}" data-field="addressDetail" bindinput="onField" />
+      </view>
+    </block>
+    <block wx:if="{{type === 'reserve'}}">
+      <view class="field">
+        <text class="field-label">到店时间</text>
+        <input class="field-input" placeholder="如 今天 19:00" value="{{reserveTime}}" data-field="reserveTime" bindinput="onField" />
+      </view>
+      <view class="field">
+        <text class="field-label">人数</text>
+        <input class="field-input" placeholder="用餐人数" value="{{personCount}}" data-field="personCount" bindinput="onField" type="number" />
+      </view>
+    </block>
+  </view>
+
+  <view class="card">
+    <view class="section-title">备注</view>
+    <textarea class="remark" placeholder="订单备注（选填）" value="{{remark}}" bindinput="onRemark" maxlength="100" />
+  </view>
+
+  <view class="submit-bar safe-bottom">
+    <view class="sb-total">合计 <text class="price"><text class="price-symbol">¥</text><text class="price-num">{{total}}</text></text></view>
+    <view class="sb-btn" bindtap="submit">微信支付</view>
+  </view>
+  <view class="bottom-space"></view>
+</view>

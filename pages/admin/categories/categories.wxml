@@ -1,0 +1,29 @@
+<view class="admin-cats">
+  <view class="ac-head flex-between">
+    <text class="ac-title">分类（{{list.length}}）</text>
+    <view class="ac-add" bindtap="toggleForm">{{showForm ? '收起' : '+ 新增'}}</view>
+  </view>
+
+  <view class="ac-form card" wx:if="{{showForm}}">
+    <view class="af-row">
+      <text class="af-label">名称</text>
+      <input class="af-input" placeholder="分类名称" value="{{form.name}}" data-field="name" bindinput="onField" />
+    </view>
+    <view class="af-row">
+      <text class="af-label">排序</text>
+      <input class="af-input" type="number" placeholder="数字越小越靠前" value="{{form.sort}}" data-field="sort" bindinput="onField" />
+    </view>
+    <view class="af-submit" bindtap="submit">保存分类</view>
+  </view>
+
+  <view class="cat-row card" wx:for="{{list}}" wx:key="_id">
+    <view class="cr-main">
+      <text class="cr-name">{{item.name}}</text>
+      <text class="cr-sort">排序 {{item.sort}}</text>
+    </view>
+    <view class="cr-ops">
+      <switch checked="{{item.isActive}}" color="#3F5A4B" data-id="{{item._id}}" data-active="{{item.isActive}}" bindchange="toggleActive" />
+      <text class="cr-del" data-id="{{item._id}}" bindtap="remove">删除</text>
+    </view>
+  </view>
+</view>

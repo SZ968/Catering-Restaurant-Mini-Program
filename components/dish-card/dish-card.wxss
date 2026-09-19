@@ -1,0 +1,60 @@
+.dish-card {
+  display: flex;
+  background: #fff;
+  border-radius: 18rpx;
+  overflow: hidden;
+  box-shadow: 0 6rpx 20rpx rgba(140, 90, 60, 0.08);
+  position: relative;
+}
+.dish-card.off {
+  filter: grayscale(0.8);
+  opacity: 0.85;
+}
+.dish-img {
+  width: 200rpx;
+  height: 200rpx;
+  flex-shrink: 0;
+  background: var(--color-paper);
+}
+.dish-body {
+  flex: 1;
+  padding: 20rpx 22rpx;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.dish-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.dish-tags {
+  margin-top: 8rpx;
+}
+.dish-desc {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: var(--color-sub);
+  flex: 1;
+}
+.dish-bottom {
+  margin-top: 12rpx;
+}
+.soldout-mask {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(62, 39, 35, 0.28);
+}
+.stamp {
+  border: 4rpx solid #fff;
+  color: #fff;
+  font-size: 34rpx;
+  font-weight: 700;
+  padding: 8rpx 24rpx;
+  border-radius: 10rpx;
+  transform: rotate(-12deg);
+  letter-spacing: 4rpx;
+}

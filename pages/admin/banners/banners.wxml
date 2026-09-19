@@ -1,0 +1,31 @@
+<view class="banners">
+  <view class="b-header">
+    <text class="b-title title-serif">轮播图管理</text>
+    <text class="b-sub">首页滚动图片 · 上传 / 排序 / 启用</text>
+  </view>
+
+  <view class="upload-row">
+    <input class="b-input" placeholder="图片标题（可选）" value="{{title}}" bindinput="onTitle" />
+    <button class="b-upload" loading="{{uploading}}" bindtap="upload">
+      {{uploading ? '上传中' : '+ 上传图片'}}
+    </button>
+  </view>
+
+  <view class="b-list">
+    <view class="b-item" wx:for="{{list}}" wx:key="_id">
+      <image class="b-thumb" src="{{item.fileID}}" mode="aspectFill" />
+      <view class="b-info">
+        <text class="b-name">{{item.title || '轮播图'}}</text>
+        <text class="b-state {{item.isActive ? 'on' : 'off'}}">{{item.isActive ? '已启用' : '已隐藏'}}</text>
+      </view>
+      <view class="b-ops">
+        <view class="b-op" data-idx="{{index}}" data-dir="up" bindtap="move">↑</view>
+        <view class="b-op" data-idx="{{index}}" data-dir="down" bindtap="move">↓</view>
+        <view class="b-op" data-id="{{item._id}}" data-active="{{item.isActive}}" bindtap="toggle">{{item.isActive ? '隐藏' : '启用'}}</view>
+        <view class="b-op danger" data-id="{{item._id}}" data-fileid="{{item.fileID}}" bindtap="remove">删</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="b-tip" wx:if="{{list.length === 0}}">还没有轮播图，点击上方「上传图片」添加。</view>
+</view>

@@ -1,0 +1,49 @@
+<view class="admin-dishes">
+  <view class="ad-head flex-between">
+    <text class="ad-title">菜品（{{list.length}}）</text>
+    <view class="ad-add" bindtap="toggleForm">{{showForm ? '收起' : '+ 新增'}}</view>
+  </view>
+
+  <view class="ad-form card" wx:if="{{showForm}}">
+    <view class="af-row">
+      <text class="af-label">名称</text>
+      <input class="af-input" placeholder="菜品名称" value="{{form.name}}" data-field="name" bindinput="onField" />
+    </view>
+    <view class="af-row">
+      <text class="af-label">价格</text>
+      <input class="af-input" type="digit" placeholder="0.00" value="{{form.price}}" data-field="price" bindinput="onField" />
+    </view>
+    <view class="af-row">
+      <text class="af-label">分类</text>
+      <picker class="af-picker" range="{{categories}}" range-key="name" value="{{form.categoryIndex}}" bindchange="onCate">
+        <view class="af-input">{{categories[form.categoryIndex].name || '请选择'}}</view>
+      </picker>
+    </view>
+    <view class="af-row">
+      <text class="af-label">规格</text>
+      <input class="af-input" placeholder="选填，如 微辣/中辣/特辣" value="{{form.specText}}" data-field="specText" bindinput="onField" />
+    </view>
+    <view class="af-row">
+      <text class="af-label">图片</text>
+      <view class="af-img" bindtap="chooseImage">
+        <image wx:if="{{form.image}}" src="{{form.image}}" mode="aspectFill" class="af-preview" />
+        <text wx:else class="af-img-add">{{uploading ? '上传中…' : '+ 选择图片'}}</text>
+      </view>
+    </view>
+    <view class="af-submit" bindtap="submit">保存菜品</view>
+  </view>
+
+  <view class="dish-row card" wx:for="{{list}}" wx:key="_id">
+    <image class="dr-img" src="{{item.image}}" mode="aspectFill" />
+    <view class="dr-body">
+      <view class="dr-name ellipsis">{{item.name}}</view>
+      <view class="dr-price">¥{{item.price}}</view>
+      <view class="dr-seg">
+        <view class="seg-btn {{item.status === 'on' ? 'active' : ''}}" data-id="{{item._id}}" data-status="on" bindtap="setStatus">在售</view>
+        <view class="seg-btn {{item.status === 'soldout' ? 'active sold' : ''}}" data-id="{{item._id}}" data-status="soldout" bindtap="setStatus">售罄</view>
+        <view class="seg-btn {{item.status === 'off' ? 'active off' : ''}}" data-id="{{item._id}}" data-status="off" bindtap="setStatus">下架</view>
+      </view>
+    </view>
+    <text class="dr-del" data-id="{{item._id}}" bindtap="remove">删除</text>
+  </view>
+</view>

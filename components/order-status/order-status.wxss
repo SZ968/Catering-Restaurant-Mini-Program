@@ -1,0 +1,47 @@
+.order-status {
+  padding: 8rpx 0;
+}
+.os-item {
+  display: flex;
+}
+.os-left {
+  width: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.os-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background: #d9cdbf;
+  margin-top: 8rpx;
+  flex-shrink: 0;
+}
+.os-dot.done {
+  background: var(--color-primary);
+}
+.os-line {
+  flex: 1;
+  width: 2rpx;
+  background: var(--color-line);
+  margin: 4rpx 0;
+}
+.os-right {
+  flex: 1;
+  padding: 0 0 28rpx 20rpx;
+}
+.os-label {
+  font-size: 28rpx;
+  color: var(--color-sub);
+}
+.os-label.done {
+  color: var(--color-text);
+  font-weight: 600;
+}
+.os-time {
+  display: block;
+  font-size: 22rpx;
+  color: #aaa;
+  margin-top: 4rpx;
+}

@@ -1,0 +1,26 @@
+<view class="mod-page">
+  <view class="mp-header">
+    <text class="mp-title title-serif">首页模块管理</text>
+    <text class="mp-sub">拖动顺序、开关显隐，用户端实时生效</text>
+  </view>
+
+  <view class="mod-list">
+    <view class="mod-item" wx:for="{{modules}}" wx:key="_id">
+      <view class="mod-main">
+        <view class="mod-no">{{index + 1}}</view>
+        <view class="mod-info">
+          <text class="mod-name" bindtap="rename" data-index="{{index}}">{{item.title}}</text>
+          <text class="mod-type">类型：{{item.type}}</text>
+        </view>
+        <switch checked="{{item.visible}}" color="#C2392B" bindchange="toggle" data-index="{{index}}" />
+      </view>
+      <view class="mod-ops">
+        <view class="op-btn {{index === 0 ? 'disabled' : ''}}" bindtap="move" data-index="{{index}}" data-dir="up">↑ 上移</view>
+        <view class="op-btn {{index === modules.length - 1 ? 'disabled' : ''}}" bindtap="move" data-index="{{index}}" data-dir="down">↓ 下移</view>
+        <view class="op-btn ghost" bindtap="rename" data-index="{{index}}">改名</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="mp-tip">提示：关闭某模块后，用户端首页将不再展示该区块。</view>
+</view>

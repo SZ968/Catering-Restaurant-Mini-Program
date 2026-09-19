@@ -1,0 +1,21 @@
+<view class="admin-login">
+  <view class="al-logo title-serif">猴王大虾</view>
+  <view class="al-sub">商家管理端</view>
+
+  <view class="al-card card" wx:if="{{checking}}">
+    <text class="al-tip">正在校验权限…</text>
+  </view>
+
+  <block wx:else>
+    <view class="al-card card" wx:if="{{isAdmin}}">
+      <text class="al-tip">验证通过，正在进入…</text>
+    </view>
+    <view class="al-card card" wx:else>
+      <text class="al-tip">当前微信账号尚未获得管理权限</text>
+      <text class="al-openid" wx:if="{{openid}}">OPENID：{{openid}}</text>
+      <view class="al-copy" wx:if="{{openid}}" bindtap="copyOpenid">复制我的 openid</view>
+      <view class="al-btn" bindtap="apply">申请成为管理员（首次初始化）</view>
+      <text class="al-note">注：首个微信可直接成为店主；已有店主后，新管理员的申请需由店主在「管理员」页审核通过。</text>
+    </view>
+  </block>
+</view>

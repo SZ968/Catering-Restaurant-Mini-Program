@@ -1,0 +1,48 @@
+<view class="ann">
+  <view class="a-header">
+    <text class="a-title title-serif">公告管理</text>
+    <text class="a-sub">发布后实时同步至用户端首页</text>
+  </view>
+
+  <!-- 编辑表单 -->
+  <view class="a-form">
+    <view class="a-row">
+      <text class="a-label">标题</text>
+      <input class="a-input" value="{{title}}" placeholder="如：今日特价 / 春节期间营业时间" bindinput="onTitle" />
+    </view>
+    <view class="a-row col">
+      <text class="a-label">内容</text>
+      <textarea class="a-textarea" value="{{content}}" placeholder="请输入公告内容" bindinput="onContent" maxlength="500" />
+    </view>
+    <view class="a-row">
+      <text class="a-label">置顶</text>
+      <switch checked="{{pin}}" color="#E65C2A" bindchange="onPin" />
+    </view>
+    <view class="a-row">
+      <text class="a-label">启用</text>
+      <switch checked="{{isActive}}" color="#E65C2A" bindchange="onActive" />
+    </view>
+    <view class="a-actions">
+      <button class="a-btn ghost" bindtap="startAdd">清空</button>
+      <button class="a-btn primary" loading="{{saving}}" bindtap="save">{{editingId ? '保存修改' : '发布公告'}}</button>
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view class="a-list">
+    <view class="a-item" wx:for="{{list}}" wx:key="_id">
+      <view class="a-item-head">
+        <text wx:if="{{item.pin}}" class="a-pin">置顶</text>
+        <text class="a-item-title">{{item.title}}</text>
+        <text class="a-badge {{item.isActive ? 'on' : 'off'}}">{{item.isActive ? '展示中' : '已隐藏'}}</text>
+      </view>
+      <text class="a-item-content">{{item.content}}</text>
+      <view class="a-item-ops">
+        <text class="a-op" data-item="{{item}}" bindtap="startEdit">编辑</text>
+        <text class="a-op" data-id="{{item._id}}" data-active="{{item.isActive}}" bindtap="toggle">{{item.isActive ? '隐藏' : '展示'}}</text>
+        <text class="a-op danger" data-id="{{item._id}}" bindtap="remove">删除</text>
+      </view>
+    </view>
+    <view class="a-empty" wx:if="{{list.length === 0}}">还没有公告，在上方发布第一条吧。</view>
+  </view>
+</view>

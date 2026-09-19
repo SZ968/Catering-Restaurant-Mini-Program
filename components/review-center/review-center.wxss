@@ -1,0 +1,224 @@
+.rc {
+  padding: 8rpx 24rpx 24rpx;
+}
+
+/* —— 评分概览 —— */
+.rc-summary {
+  display: flex;
+  align-items: center;
+  border-radius: 24rpx;
+  padding: 28rpx 30rpx;
+}
+.rc-score {
+  display: flex;
+  flex-direction: column;
+}
+.rc-num {
+  font-size: 64rpx;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+}
+.rc-total {
+  font-size: 22rpx;
+  color: var(--color-sub);
+  margin-top: 6rpx;
+}
+.rc-stars {
+  flex: 1;
+  display: flex;
+  gap: 6rpx;
+  padding: 0 20rpx;
+}
+.rc-stars.sm {
+  padding: 0;
+  gap: 2rpx;
+}
+.rc-star {
+  color: #E2D6C6;
+  font-size: 34rpx;
+}
+.rc-stars.sm .rc-star { font-size: 24rpx; }
+.rc-star.on { color: #F2B705; }
+.rc-write {
+  font-size: 26rpx;
+  color: #fff;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  padding: 12rpx 28rpx;
+  border-radius: 999rpx;
+  box-shadow: 0 8rpx 18rpx rgba(194, 57, 43, 0.28);
+}
+.rc-write:active { opacity: 0.9; }
+
+/* —— 评价列表 —— */
+.rc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22rpx;
+  margin-top: 22rpx;
+}
+.rc-item {
+  border-radius: 24rpx;
+  padding: 24rpx;
+}
+.rc-row {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+}
+.rc-avatar {
+  width: 64rpx; height: 64rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3F5A4B, #2c4034);
+  color: #fff;
+  font-size: 24rpx;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.rc-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+.rc-time {
+  font-size: 22rpx;
+  color: var(--color-sub);
+}
+.rc-content {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+.rc-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 16rpx;
+}
+.rc-img {
+  width: 180rpx; height: 180rpx;
+  border-radius: 14rpx;
+  background: #f0ece4;
+}
+.rc-reply {
+  margin-top: 16rpx;
+  background: var(--color-paper);
+  border-radius: 14rpx;
+  padding: 16rpx 18rpx;
+  font-size: 25rpx;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+.rc-reply-label { color: var(--color-brown); font-weight: 600; }
+.rc-ops {
+  display: flex;
+  justify-content: flex-end;
+  gap: 28rpx;
+  margin-top: 16rpx;
+}
+.rc-op {
+  font-size: 24rpx;
+  color: var(--color-sub);
+}
+.rc-op.danger { color: #C2392B; }
+.rc-op:active { opacity: 0.6; }
+
+.rc-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 0;
+}
+.rc-ico { font-size: 60rpx; margin-bottom: 16rpx; }
+.rc-text { font-size: 24rpx; color: var(--color-sub); }
+
+/* —— 弹层（与 merchant-feed 共用样式名） —— */
+.composer-mask {
+  position: fixed;
+  left: 0; right: 0; top: 0; bottom: 0;
+  background: rgba(20, 12, 8, 0.5);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+}
+.composer {
+  width: 100%;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  padding: 32rpx 28rpx calc(32rpx + env(safe-area-inset-bottom));
+}
+.composer-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 24rpx;
+}
+.rate-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+.rate-label { font-size: 26rpx; color: var(--color-sub); }
+.rate-stars { display: flex; gap: 10rpx; }
+.rate-star {
+  font-size: 48rpx;
+  color: #E2D6C6;
+}
+.rate-star.on { color: #F2B705; }
+.composer-note {
+  width: 100%;
+  min-height: 160rpx;
+  background: var(--color-bg);
+  border-radius: 16rpx;
+  padding: 18rpx;
+  font-size: 26rpx;
+}
+.uploader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  margin-top: 20rpx;
+}
+.thumb {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  position: relative;
+  background: #f0ece4;
+}
+.thumb image { width: 100%; height: 100%; }
+.thumb-del {
+  position: absolute;
+  top: 4rpx; right: 4rpx;
+  width: 36rpx; height: 36rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 26rpx;
+  display: flex; align-items: center; justify-content: center;
+}
+.thumb-add {
+  display: flex; align-items: center; justify-content: center;
+  border: 2rpx dashed var(--color-line);
+  color: var(--color-sub);
+  font-size: 56rpx;
+}
+.composer-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 24rpx;
+}
+.cbtn {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.cbtn.ghost { background: var(--color-paper); color: var(--color-text); }
+.cbtn.primary { background: linear-gradient(135deg, #E65C2A, #C2392B); color: #fff; }
+.cbtn.primary:active { opacity: 0.9; }

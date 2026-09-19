@@ -1,0 +1,32 @@
+.cart-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100rpx;
+  background: #fff;
+  box-shadow: 0 -6rpx 20rpx rgba(140, 90, 60, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx;
+  z-index: 40;
+}
+.cart-total {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+.cart-btn {
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  padding: 0 64rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 999rpx;
+}
+.cart-btn.disabled {
+  background: #d9cdbf;
+  color: #fff;
+}

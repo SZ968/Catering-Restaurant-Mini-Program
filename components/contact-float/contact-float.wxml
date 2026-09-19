@@ -1,0 +1,13 @@
+<!-- 常驻拨号悬浮条（align=right 时显示在右下角） -->
+<view class="contact-float {{align}} safe-bottom">
+  <view
+    class="phone-btn"
+    wx:for="{{phones}}"
+    wx:key="*this"
+    data-phone="{{item}}"
+    bindtap="onCall"
+  >
+    <text class="phone-ico">拨</text>
+    <text class="phone-num">{{item}}</text>
+  </view>
+</view>

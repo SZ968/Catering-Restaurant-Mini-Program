@@ -1,0 +1,103 @@
+.admin-dishes {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: 24rpx;
+}
+.ad-head {
+  margin-bottom: 20rpx;
+}
+.ad-title {
+  font-size: 34rpx;
+  font-weight: 700;
+}
+.ad-add {
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  font-size: 26rpx;
+  padding: 10rpx 28rpx;
+  border-radius: 999rpx;
+}
+.ad-form {
+  margin-bottom: 24rpx;
+}
+.af-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.af-label {
+  width: 110rpx;
+  font-size: 26rpx;
+  color: var(--color-sub);
+  flex-shrink: 0;
+}
+.af-input {
+  flex: 1;
+  background: var(--color-paper);
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+}
+.af-picker { flex: 1; }
+.af-img {
+  flex: 1;
+  height: 160rpx;
+  background: var(--color-paper);
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.af-preview { width: 100%; height: 100%; border-radius: 12rpx; }
+.af-img-add { font-size: 26rpx; color: var(--color-sub); }
+.af-submit {
+  margin-top: 8rpx;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  height: 84rpx;
+  line-height: 84rpx;
+  border-radius: 999rpx;
+}
+.dish-row {
+  display: flex;
+  align-items: center;
+  padding: 18rpx;
+  margin-bottom: 18rpx;
+}
+.dr-img {
+  width: 120rpx; height: 120rpx;
+  border-radius: 12rpx;
+  background: var(--color-paper);
+  flex-shrink: 0;
+}
+.dr-body {
+  flex: 1;
+  margin: 0 18rpx;
+  min-width: 0;
+}
+.dr-name { font-size: 28rpx; font-weight: 700; }
+.dr-price { font-size: 26rpx; color: var(--color-primary-dark); font-weight: 600; margin: 4rpx 0 10rpx; }
+.dr-seg {
+  display: flex;
+  gap: 10rpx;
+}
+.seg-btn {
+  font-size: 22rpx;
+  padding: 6rpx 18rpx;
+  border-radius: 999rpx;
+  background: var(--color-paper);
+  color: var(--color-sub);
+  border: 2rpx solid transparent;
+}
+.seg-btn.active { background: rgba(63,90,75,0.15); color: #3F5A4B; border-color: #3F5A4B; }
+.seg-btn.active.sold { background: rgba(230,162,60,0.15); color: #E6A23C; border-color: #E6A23C; }
+.seg-btn.active.off { background: rgba(140,90,60,0.15); color: #8C5A3C; border-color: #8C5A3C; }
+.dr-del {
+  font-size: 24rpx;
+  color: #c0392b;
+  flex-shrink: 0;
+  padding-left: 10rpx;
+}

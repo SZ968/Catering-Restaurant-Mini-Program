@@ -1,0 +1,16 @@
+<scroll-view class="cat-tabs" scroll-x="true" enhanced="true" show-scrollbar="false">
+  <view class="cat-track">
+    <view
+      class="cat-item {{activeId === item._id ? 'active' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="_id"
+      data-id="{{item._id}}"
+      bindtap="onTap"
+    >
+      {{item.name}}
+    </view>
+  </view>
+</scroll-view>
+<view class="cat-hint" wx:if="{{categories.length > 5}}">
+  <text class="cat-hint-text">← 左右滑动切换分类 →</text>
+</view>

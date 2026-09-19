@@ -1,0 +1,93 @@
+.checkout {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: 24rpx;
+  padding-bottom: 160rpx;
+}
+.co-item {
+  display: flex;
+  align-items: center;
+  padding: 14rpx 0;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid var(--color-line);
+}
+.co-item:last-child { border-bottom: none; }
+.co-name { flex: 1; min-width: 0; }
+.co-spec { font-size: 22rpx; color: var(--color-primary); margin: 0 12rpx; }
+.co-qty { color: var(--color-sub); margin: 0 16rpx; }
+.co-price { color: var(--color-text); font-weight: 600; }
+
+.type-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.type-item {
+  padding: 14rpx 30rpx;
+  border-radius: 999rpx;
+  background: var(--color-paper);
+  color: var(--color-brown);
+  font-size: 26rpx;
+  border: 2rpx solid transparent;
+}
+.type-item.active {
+  background: rgba(230,92,42,0.12);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+.type-item.disabled {
+  opacity: 0.4;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  margin-top: 22rpx;
+}
+.field-label {
+  width: 130rpx;
+  font-size: 26rpx;
+  color: var(--color-sub);
+  flex-shrink: 0;
+}
+.field-input {
+  flex: 1;
+  background: var(--color-paper);
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+}
+.remark {
+  width: 100%;
+  min-height: 120rpx;
+  background: var(--color-paper);
+  border-radius: 14rpx;
+  padding: 18rpx;
+  font-size: 26rpx;
+}
+
+.submit-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 110rpx;
+  background: #fff;
+  box-shadow: 0 -6rpx 20rpx rgba(140,90,60,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx;
+  z-index: 40;
+}
+.sb-total { font-size: 28rpx; color: var(--color-sub); }
+.sb-btn {
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 600;
+  padding: 0 72rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  border-radius: 999rpx;
+}
+.bottom-space { height: 120rpx; }

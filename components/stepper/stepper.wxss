@@ -1,0 +1,30 @@
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1rpx solid var(--color-line);
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+.step-btn {
+  width: 56rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: var(--color-primary);
+  background: #fff;
+}
+.step-btn.no {
+  color: #ccc;
+}
+.step-num {
+  min-width: 64rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-left: 1rpx solid var(--color-line);
+  border-right: 1rpx solid var(--color-line);
+}
+.stepper.disabled {
+  opacity: 0.5;
+}

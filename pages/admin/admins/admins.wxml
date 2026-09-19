@@ -1,0 +1,35 @@
+<view class="admin-admins">
+  <view class="aa-header">
+    <text class="aa-title title-serif">管理员管理</text>
+    <text class="aa-sub">审核新申请 · 管理现有管理员</text>
+  </view>
+
+  <view class="aa-section" wx:if="{{applications.length}}">
+    <text class="aa-sec-title">待审核申请（{{applications.length}}）</text>
+    <view class="aa-card" wx:for="{{applications}}" wx:key="_id">
+      <view class="aa-info">
+        <text class="aa-name">{{item.name}}</text>
+        <text class="aa-openid">{{item.openid}}</text>
+      </view>
+      <view class="aa-actions">
+        <view class="aa-btn aa-pass" data-openid="{{item.openid}}" data-name="{{item.name}}" bindtap="approve">通过</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="aa-section">
+    <text class="aa-sec-title">现有管理员（{{admins.length}}）</text>
+    <view class="aa-card" wx:for="{{admins}}" wx:key="_id">
+      <view class="aa-info">
+        <text class="aa-name">{{item.name}}<text class="aa-role" wx:if="{{item.role === 'owner'}}">店主</text></text>
+        <text class="aa-openid">{{item.openid}}</text>
+      </view>
+      <view class="aa-actions">
+        <view class="aa-btn aa-del" data-openid="{{item.openid}}" bindtap="remove">移除</view>
+      </view>
+    </view>
+    <view class="aa-empty" wx:if="{{!admins.length}}">暂无管理员</view>
+  </view>
+
+  <view class="aa-tip">新管理员可在登录页点「申请成为管理员」提交申请，你在此审核通过即可。</view>
+</view>

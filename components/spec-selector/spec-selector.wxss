@@ -1,0 +1,27 @@
+.spec-block {
+  margin-bottom: 24rpx;
+}
+.spec-label {
+  font-size: 26rpx;
+  color: var(--color-sub);
+  margin-bottom: 14rpx;
+}
+.spec-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+.spec-opt {
+  padding: 10rpx 28rpx;
+  border-radius: 999rpx;
+  background: var(--color-paper);
+  color: var(--color-brown);
+  font-size: 26rpx;
+  border: 2rpx solid transparent;
+}
+.spec-opt.active {
+  background: rgba(230, 92, 42, 0.12);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  font-weight: 600;
+}

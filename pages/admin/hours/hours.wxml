@@ -1,0 +1,39 @@
+<view class="admin-hours">
+  <view class="card">
+    <view class="ah-row flex-between">
+      <view>
+        <view class="ah-label">营业总开关</view>
+        <view class="ah-hint">关闭后顾客端显示「休息中」</view>
+      </view>
+      <switch checked="{{isOpen}}" color="#E65C2A" bindchange="onToggleOpen" />
+    </view>
+    <view class="ah-row flex-between">
+      <view>
+        <view class="ah-label">开放外卖</view>
+        <view class="ah-hint">仅闲暇时段开启，避免高峰压力</view>
+      </view>
+      <switch checked="{{allowDelivery}}" color="#E65C2A" bindchange="onToggleDelivery" />
+    </view>
+    <view class="ah-row-col">
+      <text class="ah-label">临时歇业通知</text>
+      <textarea class="ah-notice" placeholder="选填，将在顾客端横幅展示" value="{{notice}}" bindinput="onNotice" maxlength="60" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">每日营业时段</view>
+    <view class="day-row" wx:for="{{hours}}" wx:key="weekday" wx:for-item="h" wx:for-index="idx">
+      <view class="day-name">{{h.name}}</view>
+      <picker class="day-time" mode="time" value="{{h.openTime}}" data-idx="{{idx}}" data-field="openTime" bindchange="onTime">
+        <view class="day-time-val">{{h.openTime}}</view>
+      </picker>
+      <text class="day-sep">~</text>
+      <picker class="day-time" mode="time" value="{{h.closeTime}}" data-idx="{{idx}}" data-field="closeTime" bindchange="onTime">
+        <view class="day-time-val">{{h.closeTime}}</view>
+      </picker>
+      <view class="day-closed {{h.isClosed ? 'on' : ''}}" data-idx="{{idx}}" bindtap="toggleClosed">休</view>
+    </view>
+  </view>
+
+  <view class="ah-save" bindtap="save">保存配置</view>
+</view>

@@ -1,0 +1,83 @@
+.contact-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+.brand-card {
+  text-align: center;
+  padding: 44rpx;
+  background: linear-gradient(160deg, #C2392B, #8C5A3C);
+}
+.bc-name {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 6rpx;
+}
+.bc-slogan {
+  margin-top: 12rpx;
+  color: #ffe9d6;
+  font-size: 28rpx;
+  letter-spacing: 3rpx;
+}
+.phone-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid var(--color-line);
+}
+.phone-row:last-child { border-bottom: none; }
+.pr-left {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+.pr-ico {
+  width: 48rpx; height: 48rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  font-size: 24rpx;
+  display: flex; align-items: center; justify-content: center;
+}
+.pr-num {
+  font-size: 34rpx;
+  font-weight: 700;
+  letter-spacing: 1rpx;
+}
+.pr-ops {
+  display: flex;
+  gap: 16rpx;
+}
+.pr-op {
+  font-size: 26rpx;
+  color: #fff;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  padding: 8rpx 28rpx;
+  border-radius: 999rpx;
+}
+.pr-op.ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2rpx solid var(--color-primary);
+}
+.addr-line {
+  font-size: 28rpx;
+  color: var(--color-text);
+  margin-bottom: 8rpx;
+}
+.addr-line.sub {
+  color: var(--color-sub);
+  font-size: 26rpx;
+}
+.nav-btn {
+  margin-top: 22rpx;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  height: 84rpx;
+  line-height: 84rpx;
+  border-radius: 999rpx;
+}

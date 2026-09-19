@@ -1,0 +1,27 @@
+<view class="admin-materials">
+  <view class="am-head">素材管理</view>
+
+  <view class="am-form card">
+    <view class="af-row">
+      <text class="af-label">类型</text>
+      <picker class="af-picker" range="{{types}}" range-key="label" value="{{typeIndex}}" bindchange="onType">
+        <view class="af-input">{{types[typeIndex].label}}</view>
+      </picker>
+    </view>
+    <view class="af-row">
+      <text class="af-label">标题</text>
+      <input class="af-input" placeholder="选填" value="{{title}}" bindinput="onTitle" />
+    </view>
+    <view class="am-upload" bindtap="upload">{{uploading ? '上传中…' : '+ 上传图片'}}</view>
+  </view>
+
+  <view class="am-grid">
+    <view class="am-cell" wx:for="{{list}}" wx:key="_id">
+      <image class="am-img" src="{{item.fileID}}" mode="aspectFill" data-url="{{item.fileID}}" bindtap="preview" />
+      <view class="am-bar">
+        <switch checked="{{item.isActive}}" color="#3F5A4B" data-id="{{item._id}}" data-active="{{item.isActive}}" bindchange="toggle" />
+        <text class="am-del" data-id="{{item._id}}" bindtap="remove">删</text>
+      </view>
+    </view>
+  </view>
+</view>

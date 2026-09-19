@@ -1,0 +1,18 @@
+<view class="dish-card {{isOff ? 'off' : ''}}" bindtap="onTap">
+  <image class="dish-img" src="{{dish.image}}" mode="aspectFill" lazy-load="true" />
+  <view class="dish-body">
+    <view class="dish-name ellipsis">{{dish.name}}</view>
+    <view class="dish-tags" wx:if="{{dish.tags.length}}">
+      <text class="tag" wx:for="{{dish.tags}}" wx:key="*this" wx:for-item="t">{{t}}</text>
+    </view>
+    <view class="dish-desc ellipsis-2">{{dish.description}}</view>
+    <view class="dish-bottom">
+      <view class="price">
+        <text class="price-symbol">¥</text><text class="price-num">{{priceText}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="soldout-mask" wx:if="{{isOff}}">
+    <text class="stamp">{{offText}}</text>
+  </view>
+</view>

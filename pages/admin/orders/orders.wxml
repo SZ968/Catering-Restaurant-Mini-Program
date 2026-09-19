@@ -1,0 +1,31 @@
+<view class="admin-orders">
+  <view class="filter-tabs">
+    <view class="ft-item {{filter === f.key ? 'active' : ''}}" wx:for="{{filters}}" wx:key="key" wx:for-item="f" data-key="{{f.key}}" bindtap="onFilter">{{f.label}}</view>
+  </view>
+
+  <view class="ao-list" wx:if="{{filtered.length}}">
+    <view class="ao-card card" wx:for="{{filtered}}" wx:key="_id" data-id="{{item._id}}" bindtap="preview">
+      <view class="ao-head flex-between">
+        <text class="ao-no ellipsis">订单 {{item.orderNo}}</text>
+        <text class="ao-status">{{item.statusText}}·{{item.typeText}}</text>
+      </view>
+      <view class="ao-items ellipsis">
+        <text wx:for="{{item.items}}" wx:for-item="it" wx:key="dishId">{{it.name}} x{{it.quantity}} </text>
+      </view>
+      <view class="ao-foot flex-between">
+        <text class="ao-time">{{item.timeText}}</text>
+        <text class="ao-total">¥{{item.totalText}}</text>
+      </view>
+      <view class="ao-ops">
+        <text class="ao-op paid" wx:if="{{item.status === 'unpaid'}}" data-id="{{item._id}}" data-status="paid" catchtap="update">标记已收款</text>
+        <text class="ao-op prep" wx:if="{{item.status === 'paid'}}" data-id="{{item._id}}" data-status="preparing" catchtap="update">开始备餐</text>
+        <text class="ao-op done" wx:if="{{item.status === 'preparing'}}" data-id="{{item._id}}" data-status="done" catchtap="update">完成</text>
+        <text class="ao-op cancel" wx:if="{{item.status !== 'canceled' && item.status !== 'done'}}" data-id="{{item._id}}" data-status="canceled" catchtap="update">取消</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="empty-text">暂无订单</text>
+  </view>
+</view>

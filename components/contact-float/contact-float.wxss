@@ -1,0 +1,41 @@
+.contact-float {
+  position: fixed;
+  left: 20rpx;
+  bottom: 40rpx;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+/* 右下角变体 */
+.contact-float.right {
+  left: auto;
+  right: 20rpx;
+  align-items: flex-end;
+}
+.phone-btn {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  padding: 12rpx 22rpx 12rpx 12rpx;
+  border-radius: 999rpx;
+  box-shadow: 0 8rpx 20rpx rgba(194, 57, 43, 0.35);
+}
+.phone-ico {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phone-num {
+  font-size: 26rpx;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}

@@ -1,0 +1,59 @@
+.biz-banner {
+  margin: 20rpx 24rpx;
+  padding: 22rpx 28rpx;
+  border-radius: 18rpx;
+  box-shadow: 0 6rpx 20rpx rgba(140, 90, 60, 0.1);
+}
+.biz-banner.open {
+  background: linear-gradient(135deg, #3F5A4B, #2f463a);
+  color: #fff;
+}
+.biz-banner.closed {
+  background: #efe7da;
+  color: var(--color-brown);
+}
+.biz-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.biz-status {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+}
+.dot {
+  width: 18rpx;
+  height: 18rpx;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 6rpx rgba(255, 255, 255, 0.25);
+}
+.biz-text {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.biz-hours {
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+.biz-notice {
+  margin-top: 14rpx;
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 24rpx;
+}
+.notice-label {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6rpx;
+  padding: 2rpx 10rpx;
+}
+.biz-banner.closed .notice-label {
+  background: var(--color-brown);
+  color: #fff;
+}
+.notice-text {
+  opacity: 0.95;
+}

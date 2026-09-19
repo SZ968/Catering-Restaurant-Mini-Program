@@ -1,0 +1,12 @@
+<view class="order-status">
+  <view class="os-item" wx:for="{{logs}}" wx:key="label" wx:for-item="item">
+    <view class="os-left">
+      <view class="os-dot {{item.done ? 'done' : ''}}"></view>
+      <view class="os-line" wx:if="{{index !== logs.length - 1}}"></view>
+    </view>
+    <view class="os-right">
+      <text class="os-label {{item.done ? 'done' : ''}}">{{item.label}}</text>
+      <text class="os-time" wx:if="{{item.time}}">{{item.time}}</text>
+    </view>
+  </view>
+</view>

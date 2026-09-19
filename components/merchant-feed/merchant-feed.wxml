@@ -1,0 +1,63 @@
+<view class="feed">
+  <view class="feed-head">
+    <view class="feed-title">商户动态</view>
+    <view class="feed-post" bindtap="onPost">＋ 发布</view>
+  </view>
+
+  <view class="feed-list" wx:if="{{list.length}}">
+    <view class="moment card" wx:for="{{list}}" wx:key="_id">
+      <view class="moment-imgs">
+        <image
+          wx:for="{{item.images}}"
+          wx:for-item="img"
+          wx:key="*this"
+          class="moment-img"
+          src="{{img}}"
+          mode="widthFix"
+          bindtap="preview"
+          data-url="{{img}}"
+          data-urls="{{item.images}}"
+        />
+      </view>
+      <view class="moment-note ellipsis-2" wx:if="{{item.note}}">{{item.note}}</view>
+      <view class="moment-del" wx:if="{{isAdmin}}" bindtap="onDelete" data-id="{{item._id}}">删除</view>
+    </view>
+  </view>
+
+  <view class="feed-empty" wx:elif="{{!loading}}">
+    <text class="fe-ico">📷</text>
+    <text class="fe-text">暂无动态，商家可点右上角发布</text>
+  </view>
+
+  <!-- 发布弹层 -->
+  <view class="composer-mask" wx:if="{{composing}}" bindtap="cancelCompose">
+    <view class="composer" catchtap="noop">
+      <view class="composer-title">发布动态</view>
+      <view class="uploader">
+        <view
+          class="thumb"
+          wx:for="{{tempImages}}"
+          wx:key="*this"
+          bindtap="preview"
+          data-url="{{item}}"
+          data-urls="{{tempImages}}"
+        >
+          <image src="{{item}}" mode="aspectFill" />
+          <view class="thumb-del" catchtap="removeTemp" data-index="{{index}}">×</view>
+        </view>
+        <view class="thumb thumb-add" bindtap="chooseImage" wx:if="{{tempImages.length < 9}}">＋</view>
+      </view>
+      <textarea
+        class="composer-note"
+        maxlength="100"
+        placeholder="写点备注（选填，最多两行）"
+        value="{{note}}"
+        bindinput="onNoteInput"
+      />
+      <view class="composer-actions">
+        <view class="cbtn ghost" bindtap="cancelCompose">取消</view>
+        <view class="cbtn primary" bindtap="submit">{{submitting ? '发布中' : '发布'}}</view>
+      </view>
+    </view>
+  </view>
+</view>

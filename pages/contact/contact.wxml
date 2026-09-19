@@ -1,0 +1,27 @@
+<view class="contact-page container">
+  <view class="card brand-card">
+    <view class="bc-name title-serif">猴王大虾</view>
+    <view class="bc-slogan">好吃的大虾会说话</view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">联系电话</view>
+    <view class="phone-row" wx:for="{{phones}}" wx:key="*this">
+      <view class="pr-left">
+        <text class="pr-ico">拨</text>
+        <text class="pr-num">{{item}}</text>
+      </view>
+      <view class="pr-ops">
+        <text class="pr-op" data-phone="{{item}}" bindtap="call">拨打</text>
+        <text class="pr-op ghost" data-phone="{{item}}" bindtap="copyPhone">复制</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">门店地址</view>
+    <view class="addr-line">{{address}}</view>
+    <view class="addr-line sub" wx:if="{{hoursText}}">{{hoursText}}</view>
+    <view class="nav-btn" bindtap="openNav">查看地图并导航</view>
+  </view>
+</view>

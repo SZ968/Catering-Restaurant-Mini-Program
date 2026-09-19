@@ -1,0 +1,8 @@
+<view class="cart-bar safe-bottom">
+  <view class="cart-total">
+    <text class="price-symbol">¥</text><text class="price-num">{{totalText}}</text>
+  </view>
+  <view class="cart-btn {{disabled ? 'disabled' : ''}}" bindtap="onCheckout">
+    {{disabled ? disabledText : '去结算'}}
+  </view>
+</view>

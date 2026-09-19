@@ -1,0 +1,45 @@
+<view class="cart-page">
+  <view class="cart-head flex-between">
+    <text class="cart-title">购物车（{{count}}）</text>
+    <text class="cart-clear" bindtap="clearAll" wx:if="{{count > 0}}">清空</text>
+  </view>
+
+  <view class="empty" wx:if="{{count === 0}}">
+    <text class="empty-ico">篮</text>
+    <text class="empty-text">购物车还是空的，去菜单挑几道虾吧～</text>
+    <view class="empty-btn btn-ghost" bindtap="goCheckout">去逛菜单</view>
+  </view>
+
+  <view class="cart-list" wx:else>
+    <view class="cart-item card" wx:for="{{items}}" wx:key="key">
+      <image class="ci-img" src="{{item.image}}" mode="aspectFill" />
+      <view class="ci-body">
+        <view class="ci-name ellipsis">{{item.name}}</view>
+        <view class="ci-spec" wx:if="{{item.spec}}">{{item.spec}}</view>
+        <input
+          class="ci-note"
+          placeholder="口味备注（选填）"
+          value="{{item.note}}"
+          data-key="{{item.key}}"
+          bindinput="onNote"
+        />
+        <view class="ci-bottom flex-between">
+          <view class="price"><text class="price-symbol">¥</text><text class="price-num">{{item.price}}</text></view>
+          <view class="ci-ops">
+            <stepper value="{{item.quantity}}" min="1" max="99" data-key="{{item.key}}" bind:change="onQty" />
+            <text class="ci-del" data-key="{{item.key}}" bindtap="onRemove">删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="checkout-bar safe-bottom" wx:if="{{count > 0}}">
+    <view class="cb-total">
+      <text class="cb-label">合计</text>
+      <text class="price"><text class="price-symbol">¥</text><text class="price-num">{{total}}</text></text>
+    </view>
+    <view class="cb-btn" bindtap="goCheckout">去结算</view>
+  </view>
+  <view class="bottom-space" wx:if="{{count > 0}}"></view>
+</view>

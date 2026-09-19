@@ -1,0 +1,104 @@
+<view class="rc">
+  <!-- 评分概览 -->
+  <view class="rc-summary card">
+    <view class="rc-score">
+      <text class="rc-num">{{average}}</text>
+      <text class="rc-total">分 · {{total}} 条评价</text>
+    </view>
+    <view class="rc-stars">
+      <text class="rc-star {{index < avgInt ? 'on' : ''}}" wx:for="{{[0,1,2,3,4]}}" wx:key="*this" wx:for-index="index">★</text>
+    </view>
+    <view class="rc-write" bindtap="onWrite">写评价</view>
+  </view>
+
+  <!-- 评价列表 -->
+  <view class="rc-list" wx:if="{{list.length}}">
+    <view class="rc-item card" wx:for="{{list}}" wx:key="_id">
+      <view class="rc-row">
+        <view class="rc-avatar">{{item._openid ? item._openid.slice(-2) : '客'}}</view>
+        <view class="rc-meta">
+          <view class="rc-stars sm">
+            <text class="rc-star {{index < item.rating ? 'on' : ''}}" wx:for="{{[0,1,2,3,4]}}" wx:key="*this" wx:for-item="s" wx:for-index="index">★</text>
+          </view>
+          <text class="rc-time">{{item.timeText}}</text>
+        </view>
+      </view>
+      <view class="rc-content" wx:if="{{item.content}}">{{item.content}}</view>
+      <view class="rc-imgs" wx:if="{{item.images.length}}">
+        <image
+          wx:for="{{item.images}}"
+          wx:for-item="img"
+          wx:key="*this"
+          class="rc-img"
+          src="{{img}}"
+          mode="aspectFill"
+          bindtap="preview"
+          data-url="{{img}}"
+          data-urls="{{item.images}}"
+        />
+      </view>
+      <view class="rc-reply" wx:if="{{item.reply}}">
+        <text class="rc-reply-label">商家回复：</text>
+        <text class="rc-reply-text">{{item.reply.content}}</text>
+      </view>
+      <view class="rc-ops" wx:if="{{isAdmin}}">
+        <text class="rc-op" bindtap="onReply" data-id="{{item._id}}">回复</text>
+        <text class="rc-op danger" bindtap="onDelete" data-id="{{item._id}}">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="rc-empty" wx:elif="{{!loading}}">
+    <text class="rc-ico">💬</text>
+    <text class="rc-text">还没有评价，快来抢沙发</text>
+  </view>
+
+  <!-- 写评价弹层 -->
+  <view class="composer-mask" wx:if="{{composing}}" bindtap="cancelCompose">
+    <view class="composer" catchtap="noop">
+      <view class="composer-title">写评价</view>
+      <view class="rate-row">
+        <text class="rate-label">评分</text>
+        <view class="rate-stars">
+          <text class="rate-star {{index < rating ? 'on' : ''}}" wx:for="{{[1,2,3,4,5]}}" wx:key="*this" data-star="{{item}}" bindtap="setRating">{{index < rating ? '★' : '☆'}}</text>
+        </view>
+      </view>
+      <textarea
+        class="composer-note"
+        maxlength="500"
+        placeholder="说说你的用餐体验…"
+        value="{{content}}"
+        bindinput="onContent"
+      />
+      <view class="uploader">
+        <view class="thumb" wx:for="{{tempImages}}" wx:key="*this" bindtap="preview" data-url="{{item}}" data-urls="{{tempImages}}">
+          <image src="{{item}}" mode="aspectFill" />
+          <view class="thumb-del" catchtap="removeTemp" data-index="{{index}}">×</view>
+        </view>
+        <view class="thumb thumb-add" bindtap="chooseImage" wx:if="{{tempImages.length < 6}}">＋</view>
+      </view>
+      <view class="composer-actions">
+        <view class="cbtn ghost" bindtap="cancelCompose">取消</view>
+        <view class="cbtn primary" bindtap="submit">{{submitting ? '提交中' : '提交'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 商家回复弹层 -->
+  <view class="composer-mask" wx:if="{{replyingId}}" bindtap="cancelReply">
+    <view class="composer" catchtap="noop">
+      <view class="composer-title">商家回复</view>
+      <textarea
+        class="composer-note"
+        maxlength="500"
+        placeholder="输入回复内容…"
+        value="{{replyContent}}"
+        bindinput="onReplyInput"
+      />
+      <view class="composer-actions">
+        <view class="cbtn ghost" bindtap="cancelReply">取消</view>
+        <view class="cbtn primary" bindtap="submitReply">回复</view>
+      </view>
+    </view>
+  </view>
+</view>

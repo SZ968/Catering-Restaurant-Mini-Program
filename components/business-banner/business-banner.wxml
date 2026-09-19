@@ -1,0 +1,14 @@
+<!-- 营业状态横幅 -->
+<view class="biz-banner {{isOpen ? 'open' : 'closed'}}">
+  <view class="biz-row">
+    <view class="biz-status">
+      <text class="dot"></text>
+      <text class="biz-text">{{isOpen ? '营业中' : '休息中'}}</text>
+    </view>
+    <text class="biz-hours" wx:if="{{hoursText}}">{{hoursText}}</text>
+  </view>
+  <view class="biz-notice" wx:if="{{notice}}">
+    <text class="notice-label">通知</text>
+    <text class="notice-text">{{notice}}</text>
+  </view>
+</view>

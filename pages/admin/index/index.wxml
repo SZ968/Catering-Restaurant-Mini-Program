@@ -1,0 +1,32 @@
+<view class="admin-index">
+  <view class="ai-header">
+    <text class="ai-title title-serif">猴王大虾 · 管理端</text>
+    <text class="ai-sub">门店内容实时管理</text>
+  </view>
+
+  <view class="ai-stats">
+    <view class="stat-card">
+      <text class="stat-num">{{stats.bannerCount}}</text>
+      <text class="stat-label">轮播图</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-num">{{stats.announcementCount}}</text>
+      <text class="stat-label">公告</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-num">{{stats.moduleCount}}</text>
+      <text class="stat-label">启用模块</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-num">{{stats.statusText}}</text>
+      <text class="stat-label">当前状态</text>
+    </view>
+  </view>
+
+  <view class="ai-grid">
+    <view class="ai-item" wx:for="{{menus}}" wx:key="label" data-url="{{item.url}}" bindtap="go">
+      <view class="ai-ico">{{item.ico}}</view>
+      <text class="ai-label">{{item.label}}</text>
+    </view>
+  </view>
+</view>

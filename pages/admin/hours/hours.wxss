@@ -1,0 +1,69 @@
+.admin-hours {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: 24rpx;
+  padding-bottom: 160rpx;
+}
+.ah-row {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid var(--color-line);
+}
+.ah-row:last-child { border-bottom: none; }
+.ah-label { font-size: 30rpx; font-weight: 600; }
+.ah-hint { font-size: 22rpx; color: var(--color-sub); margin-top: 4rpx; }
+.ah-row-col {
+  padding: 20rpx 0 4rpx;
+}
+.ah-notice {
+  width: 100%;
+  min-height: 100rpx;
+  background: var(--color-paper);
+  border-radius: 12rpx;
+  padding: 16rpx;
+  font-size: 26rpx;
+  margin-top: 12rpx;
+}
+.day-row {
+  display: flex;
+  align-items: center;
+  padding: 18rpx 0;
+  border-bottom: 1rpx solid var(--color-line);
+}
+.day-row:last-child { border-bottom: none; }
+.day-name { width: 90rpx; font-size: 28rpx; }
+.day-time { flex: 1; }
+.day-time-val {
+  background: var(--color-paper);
+  border-radius: 10rpx;
+  text-align: center;
+  padding: 12rpx 0;
+  font-size: 28rpx;
+}
+.day-sep { margin: 0 16rpx; color: var(--color-sub); }
+.day-closed {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  background: var(--color-paper);
+  color: var(--color-sub);
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16rpx;
+}
+.day-closed.on {
+  background: #9e9e9e;
+  color: #fff;
+}
+.ah-save {
+  margin-top: 40rpx;
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: 999rpx;
+}
