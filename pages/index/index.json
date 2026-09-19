@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "contact-float": "/components/contact-float/contact-float",
+    "business-banner": "/components/business-banner/business-banner",
+    "merchant-feed": "/components/merchant-feed/merchant-feed",
+    "review-center": "/components/review-center/review-center"
+  }
+}

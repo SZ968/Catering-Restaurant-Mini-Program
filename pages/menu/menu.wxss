@@ -1,0 +1,45 @@
+.menu-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--color-bg);
+}
+.dish-list {
+  flex: 1;
+  padding: 24rpx;
+}
+.dish-wrap {
+  margin-bottom: 22rpx;
+}
+.list-bottom-safe {
+  height: 40rpx;
+}
+.bottom-space {
+  height: 120rpx;
+}
+.count-hint {
+  font-size: 24rpx;
+  color: var(--color-sub);
+  padding: 0 0 16rpx;
+}
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 48rpx;
+  color: var(--color-sub);
+}
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+.empty-title {
+  font-size: 32rpx;
+  color: var(--color-text);
+  margin-bottom: 12rpx;
+}
+.empty-desc {
+  font-size: 26rpx;
+  color: var(--color-sub);
+}

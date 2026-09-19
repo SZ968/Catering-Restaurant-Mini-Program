@@ -1,0 +1,13 @@
+<view class="rules-page">
+  <view class="rules-header">
+    <view class="shop-name">{{shopName}}</view>
+    <view class="rules-sub">食品安全管理制度公示</view>
+  </view>
+
+  <view class="reg-block" wx:for="{{regulations}}" wx:key="title">
+    <view class="reg-title">{{item.title}}</view>
+    <view class="reg-para" wx:for="{{item.paragraphs}}" wx:for-item="p" wx:key="*this">{{p}}</view>
+  </view>
+
+  <view class="list-bottom-safe"></view>
+</view>

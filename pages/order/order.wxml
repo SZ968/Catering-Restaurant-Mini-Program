@@ -1,0 +1,41 @@
+<view class="order-detail" wx:if="{{order}}">
+  <view class="od-hero {{order.status === 'canceled' ? 'cancel' : ''}}">
+    <text class="od-status">{{order.statusText}}</text>
+    <text class="od-type">{{order.typeText}}</text>
+  </view>
+
+  <view class="card">
+    <view class="section-title">订单信息</view>
+    <view class="info-row"><text class="ir-label">订单号</text><text class="ir-value">{{order.orderNo}}</text></view>
+    <view class="info-row"><text class="ir-label">下单时间</text><text class="ir-value">{{order.timeText}}</text></view>
+    <view class="info-row" wx:if="{{order.tableNo}}"><text class="ir-label">桌号</text><text class="ir-value">{{order.tableNo}}</text></view>
+    <view class="info-row" wx:if="{{order.pickupTime}}"><text class="ir-label">取餐时间</text><text class="ir-value">{{order.pickupTime}}</text></view>
+    <view class="info-row" wx:if="{{order.reserveTime}}"><text class="ir-label">到店时间</text><text class="ir-value">{{order.reserveTime}}</text></view>
+    <view class="info-row" wx:if="{{order.personCount}}"><text class="ir-label">用餐人数</text><text class="ir-value">{{order.personCount}} 人</text></view>
+    <view class="info-row" wx:if="{{order.address}}"><text class="ir-label">收货地址</text><text class="ir-value">{{order.address.name}} {{order.address.phone}} {{order.address.detail}}</text></view>
+    <view class="info-row" wx:if="{{order.remark}}"><text class="ir-label">备注</text><text class="ir-value">{{order.remark}}</text></view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">菜品</view>
+    <view class="od-item" wx:for="{{order.items}}" wx:key="dishId">
+      <text class="od-name ellipsis">{{item.name}}</text>
+      <text class="od-spec" wx:if="{{item.spec}}">{{item.spec}}</text>
+      <text class="od-qty">x{{item.quantity}}</text>
+      <text class="od-price">¥{{item.price}}</text>
+    </view>
+    <view class="od-total">合计 <text class="price"><text class="price-symbol">¥</text><text class="price-num">{{order.totalText}}</text></text></view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">状态进度</view>
+    <order-status logs="{{logs}}" />
+  </view>
+
+  <view class="od-actions safe-bottom">
+    <view class="od-call" bindtap="callShop">联系商家</view>
+    <view class="od-pay" wx:if="{{order.status === 'unpaid' && order.payMethod !== 'offline'}}" bindtap="pay">去支付 ¥{{order.totalText}}</view>
+    <view class="od-offline-tip" wx:if="{{order.payMethod === 'offline' && order.status === 'paid'}}">已下单，到店付款即可</view>
+  </view>
+  <view class="bottom-space" wx:if="{{order.status === 'unpaid' || order.payMethod === 'offline'}}"></view>
+</view>

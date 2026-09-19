@@ -1,0 +1,139 @@
+<view class="app {{activeIndex === 1 ? 'over-hero' : 'over-page'}}">
+
+  <!-- 顶部三屏切换指示（可点可滑）：商户动态 | 首页 | 评价，首页居中 -->
+  <view class="top-tabs" style="height: calc({{statusBarHeight}}px + 96rpx);">
+    <view class="tab-row">
+      <view class="tab {{activeIndex === 0 ? 'on' : ''}}" bindtap="goTab" data-i="0">商户动态</view>
+      <view class="tab {{activeIndex === 1 ? 'on' : ''}}" bindtap="goTab" data-i="1">首页</view>
+      <view class="tab {{activeIndex === 2 ? 'on' : ''}}" bindtap="goTab" data-i="2">评价</view>
+    </view>
+  </view>
+
+  <swiper class="pager" current="{{activeIndex}}" bindchange="onSwiperChange">
+    <!-- 面板 1：商户动态（图文流） -->
+    <swiper-item>
+      <scroll-view scroll-y class="panel" enable-flex>
+        <view class="panel-spacer" style="height: calc({{statusBarHeight}}px + 96rpx);"></view>
+        <merchant-feed />
+        <view class="bottom-space"></view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 面板 2：首页（保留动态模块功能，电话移至右下角，居中显示） -->
+    <swiper-item>
+      <scroll-view scroll-y class="panel" enable-flex>
+        <view class="home">
+          <block wx:if="{{homeMounted}}">
+            <view wx:for="{{modules}}" wx:key="_id">
+              <!-- 品牌 Hero：轮播图顶到屏幕最顶端（不参与位移动画） -->
+              <view wx:if="{{item.type === 'hero'}}" class="hero">
+                <swiper class="hero-swiper" autoplay indicator-dots circular interval="4500" duration="600" disable-touch>
+                  <swiper-item wx:for="{{heroImages}}" wx:key="*this">
+                    <image class="hero-img" src="{{item}}" mode="aspectFill" />
+                  </swiper-item>
+                  <swiper-item wx:if="{{heroImages.length === 0}}">
+                    <view class="hero-img hero-fallback"></view>
+                  </swiper-item>
+                </swiper>
+                <view class="status-bar-filler" style="height: {{statusBarHeight}}px;"></view>
+                <view class="hero-mask"></view>
+                <view class="brand-box">
+                  <text class="brand-kicker">宜阳 · 锦屏镇</text>
+                  <text class="brand-name title-serif">{{brandName}}</text>
+                  <view class="brand-divider"></view>
+                  <text class="brand-slogan">{{slogan}}</text>
+                </view>
+                <view class="hero-grad-bottom"></view>
+              </view>
+
+              <!-- 营业状态 -->
+              <view wx:elif="{{item.type === 'business'}}" class="module-enter" style="animation-delay: {{item._delay}}s;">
+                <business-banner isOpen="{{isOpen}}" hoursText="{{hoursText}}" notice="{{notice}}" />
+              </view>
+
+              <!-- 核心服务入口 -->
+              <view wx:elif="{{item.type === 'services'}}" class="module-enter" style="animation-delay: {{item._delay}}s;">
+                <view class="svc-grid">
+                  <view class="svc-card" bindtap="goMap">
+                    <view class="svc-ico svc-loc">位</view>
+                    <view class="svc-meta">
+                      <text class="svc-name">门店位置</text>
+                      <text class="svc-desc">导航到店 · 查看地址</text>
+                    </view>
+                    <text class="svc-arrow">›</text>
+                  </view>
+                  <view class="svc-card" bindtap="goRules">
+                    <view class="svc-ico svc-rule">示</view>
+                    <view class="svc-meta">
+                      <text class="svc-name">食品公告</text>
+                      <text class="svc-desc">食品安全管理制度公示</text>
+                    </view>
+                    <text class="svc-arrow">›</text>
+                  </view>
+                  <view class="svc-card" bindtap="goContact">
+                    <view class="svc-ico svc-phone">联</view>
+                    <view class="svc-meta">
+                      <text class="svc-name">联系方式</text>
+                      <text class="svc-desc">电话订餐 · 在线咨询</text>
+                    </view>
+                    <text class="svc-arrow">›</text>
+                  </view>
+                </view>
+              </view>
+
+              <!-- 地址条 -->
+              <view wx:elif="{{item.type === 'address'}}" class="module-enter" style="animation-delay: {{item._delay}}s;">
+                <view class="addr-bar" bindtap="goMap">
+                  <text class="addr-ico">址</text>
+                  <text class="addr-text ellipsis">{{address}}</text>
+                  <text class="addr-arrow">›</text>
+                </view>
+              </view>
+
+              <!-- 公告区 -->
+              <view wx:elif="{{item.type === 'announcements'}}" class="module-enter" style="animation-delay: {{item._delay}}s;">
+                <view class="section-head">
+                  <text class="section-title">门店公告</text>
+                </view>
+                <view class="ann-card">
+                  <block wx:if="{{hasAnnouncements}}">
+                    <view class="ann-item" wx:for="{{announcements}}" wx:key="_id">
+                      <view class="ann-title-row">
+                        <text wx:if="{{item.pin}}" class="ann-pin">置顶</text>
+                        <text class="ann-title">{{item.title}}</text>
+                      </view>
+                      <text class="ann-content">{{item.content}}</text>
+                    </view>
+                  </block>
+                  <view class="ann-empty" wx:else>
+                    <text class="ann-empty-ico">📢</text>
+                    <text class="ann-empty-text">暂无公告</text>
+                  </view>
+                </view>
+              </view>
+
+              <!-- 商家管理入口 -->
+              <view wx:elif="{{item.type === 'merchant'}}" class="module-enter" style="animation-delay: {{item._delay}}s;">
+                <view class="merchant-entry" bindtap="goAdmin">商家管理</view>
+              </view>
+            </view>
+          </block>
+
+          <view class="bottom-space"></view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 面板 3：评价 -->
+    <swiper-item>
+      <scroll-view scroll-y class="panel" enable-flex>
+        <view class="panel-spacer" style="height: calc({{statusBarHeight}}px + 96rpx);"></view>
+        <review-center />
+        <view class="bottom-space"></view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 电话悬浮：仅首页（右下角，中间屏） -->
+  <contact-float wx:if="{{activeIndex === 1}}" phones="{{phones}}" align="right" />
+</view>

@@ -1,0 +1,33 @@
+<view class="orders">
+  <view class="filter-tabs">
+    <view
+      class="ft-item {{filter === f.key ? 'active' : ''}}"
+      wx:for="{{filters}}" wx:key="key" wx:for-item="f"
+      data-key="{{f.key}}" bindtap="onFilter"
+    >{{f.label}}</view>
+  </view>
+
+  <view class="order-list" wx:if="{{filtered.length}}">
+    <view class="order-card card" wx:for="{{filtered}}" wx:key="_id" data-id="{{item._id}}" bindtap="goDetail">
+      <view class="oc-head flex-between">
+        <text class="oc-no ellipsis">订单 {{item.orderNo}}</text>
+        <text class="oc-status">{{item.statusText}} · {{item.typeText}}</text>
+      </view>
+      <view class="oc-items ellipsis">
+        <text class="oc-item" wx:for="{{item.items}}" wx:for-item="it" wx:key="dishId">{{it.name}}{{it.spec ? '(' + it.spec + ')' : ''}} x{{it.quantity}} </text>
+      </view>
+      <view class="oc-foot flex-between">
+        <text class="oc-time">{{item.timeText}}</text>
+        <view class="oc-ops">
+          <text class="oc-pay" wx:if="{{item.status === 'unpaid' && item.payMethod !== 'offline'}}" data-id="{{item._id}}" catchtap="payAgain">去支付</text>
+          <text class="oc-total">¥{{item.totalText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty" wx:else>
+    <text class="empty-text">暂无订单</text>
+    <view class="empty-btn btn-ghost" bindtap="goMenu">去点餐</view>
+  </view>
+</view>

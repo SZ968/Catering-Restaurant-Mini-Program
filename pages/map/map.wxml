@@ -1,0 +1,25 @@
+<view class="map-page">
+  <map
+    class="map-view"
+    latitude="{{latitude}}"
+    longitude="{{longitude}}"
+    markers="{{markers}}"
+    scale="16"
+    show-location="true"
+  ></map>
+
+  <view class="map-info card">
+    <view class="mi-name">{{name}}</view>
+    <view class="mi-addr">{{address}}</view>
+
+    <view class="mi-phones">
+      <view class="mi-phone" wx:for="{{phones}}" wx:key="*this" data-phone="{{item}}" bindtap="call">
+        <text class="mi-ico">拨</text>
+        <text class="mi-num">{{item}}</text>
+        <text class="mi-tag">拨打</text>
+      </view>
+    </view>
+
+    <view class="nav-btn" bindtap="openNav">导航到店</view>
+  </view>
+</view>

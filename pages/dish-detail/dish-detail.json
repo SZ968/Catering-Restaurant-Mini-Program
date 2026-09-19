@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "菜品详情",
+  "usingComponents": {
+    "spec-selector": "/components/spec-selector/spec-selector",
+    "stepper": "/components/stepper/stepper"
+  }
+}
