@@ -1,0 +1,126 @@
+/* ============================================================
+   猴王大虾 · 全局样式与设计系统
+   风格：温暖烟火气 / 乡村院落风
+   ============================================================ */
+
+page {
+  /* —— 品牌配色变量 —— */
+  --color-primary: #E65C2A;     /* 暖橙（主色） */
+  --color-primary-dark: #C2392B;/* 朱红 */
+  --color-brown: #8C5A3C;      /* 焦糖棕 */
+  --color-green: #3F5A4B;      /* 墨绿 */
+  --color-bg: #FBF6EF;         /* 米白背景 */
+  --color-paper: #F5EFE0;      /* 宣纸黄 */
+  --color-text: #3E2723;       /* 深褐正文 */
+  --color-sub: #666666;        /* 浅灰辅助 */
+  --color-line: #EADFD0;       /* 分隔线 */
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+view, text, image, button, navigator, scroll-view, swiper, input, textarea {
+  box-sizing: border-box;
+}
+
+/* —— 通用容器 —— */
+.container {
+  padding: 24rpx;
+}
+.section {
+  margin-bottom: 32rpx;
+}
+.card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  box-shadow: 0 6rpx 24rpx rgba(140, 90, 60, 0.08);
+}
+
+/* —— 标题 —— */
+.title-serif {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-weight: 700;
+}
+.section-title {
+  font-family: "Noto Serif SC", "Songti SC", serif;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: var(--color-text);
+  padding-left: 20rpx;
+  border-left: 8rpx solid var(--color-primary);
+  line-height: 1.2;
+  margin: 8rpx 0 24rpx;
+}
+
+/* —— 按钮 —— */
+.btn-primary {
+  background: linear-gradient(135deg, #E65C2A, #C2392B);
+  color: #fff;
+  border-radius: 999rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  border: none;
+  line-height: 2.8;
+}
+.btn-primary::after { border: none; }
+.btn-primary[disabled] {
+  background: #d9cdbf;
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2rpx solid var(--color-primary);
+  border-radius: 999rpx;
+  line-height: 2.4;
+  font-size: 28rpx;
+}
+.btn-ghost::after { border: none; }
+
+/* —— 价格 —— */
+.price {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+.price-symbol { font-size: 22rpx; }
+.price-num { font-size: 34rpx; }
+
+/* —— 标签 —— */
+.tag {
+  display: inline-block;
+  font-size: 20rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 6rpx;
+  margin-right: 8rpx;
+  background: rgba(230, 92, 42, 0.12);
+  color: var(--color-primary);
+}
+
+/* —— 文本省略 —— */
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* —— 底安全区 —— */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* —— 通用状态条 —— */
+.text-muted { color: var(--color-sub); }
+.text-center { text-align: center; }
+.flex-row { display: flex; align-items: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-1 { flex: 1; }

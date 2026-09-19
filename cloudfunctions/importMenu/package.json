@@ -1,0 +1,9 @@
+{
+  "name": "importMenu",
+  "version": "1.0.0",
+  "description": "导入猴王大虾真实菜单（清空后重写 res_categories / res_dishes）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}

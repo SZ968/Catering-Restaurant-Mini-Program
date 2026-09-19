@@ -1,0 +1,9 @@
+{
+  "name": "manageReviews",
+  "version": "1.0.0",
+  "description": "店铺评价管理（用户提交、商家回复/删除）",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

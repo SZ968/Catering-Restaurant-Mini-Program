@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/rules/rules",
+    "pages/map/map",
+    "pages/contact/contact"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/admin",
+      "pages": [
+        "login/login",
+        "index/index",
+        "hours/hours",
+        "banners/banners",
+        "announcements/announcements",
+        "modules/modules",
+        "admins/admins"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundColor": "#FBF6EF",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#1A120B",
+    "navigationBarTitleText": "猴王大虾",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}
